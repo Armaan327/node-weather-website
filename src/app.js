@@ -7,6 +7,7 @@ const forecast = require('./utils/forecast')
 
 
 const app = express()
+const port = process.env.port || 3000
 
 app.use(express.static('/Users/Armaan/Desktop/node-course/web-server/public'))   
 
@@ -35,7 +36,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: 'help page',
         name: 'Armaan',
-        message: 'What do you need help for..... just enter the location ~and you get the weather'
+        message: 'What do you need help for..... just enter the location and you get the weather'
     })
 })
 
@@ -85,6 +86,6 @@ app.get('*', (req,res) => {
 })
 
 
-app.listen(3000, ()=>{
-    console.log('server is up on port 3000')
+app.listen(port, ()=>{
+    console.log('server is up on port ' + port)
 })
