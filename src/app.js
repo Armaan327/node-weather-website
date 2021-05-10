@@ -3,18 +3,24 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const path = require('path')
 
 
 
 const app = express()
 const port = process.env.PORT || 3000
+// Define paths for Express config
+const publicDirectoryPath = path.join(__dirname, '../public')
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
 
-app.use(express.static('/Users/Armaan/Desktop/node-course/web-server/public'))   
-
+// Setup handlebars engine and views location
 app.set('view engine', 'hbs')
-app.set('views', '/Users/Armaan/Desktop/node-course/web-server/templates/views')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
 
-hbs.registerPartials('/Users/Armaan/Desktop/node-course/web-server/templates/partials')
+// Setup static directory to serve
+app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('index.hbs', {
