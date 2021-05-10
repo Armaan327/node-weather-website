@@ -17,7 +17,7 @@ app.set('views', '/Users/Armaan/Desktop/node-course/web-server/templates/views')
 hbs.registerPartials('/Users/Armaan/Desktop/node-course/web-server/templates/partials')
 
 app.get('', (req, res) => {
-    res.render('index', {
+    res.render('index.hbs', {
 
         title: 'Weather',
         name: 'Armaan'
@@ -26,14 +26,14 @@ app.get('', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.render('about', {
+    res.render('about.hbs', {
         title: 'About page',
         name: 'armaan'
     })
 })
 
 app.get('/help', (req, res) => {
-    res.render('help', {
+    res.render('help.hbs', {
         title: 'help page',
         name: 'Armaan',
         message: 'What do you need help for..... just enter the location and you get the weather'
@@ -70,7 +70,7 @@ app.get('/weather', (req, res) => {
 
 
 app.get('/help/*', (req, res) => {
-    res.render('404page',{
+    res.render('404page.hbs',{
         title: 'error 404',
         error: 'Help article not found',
         name: 'armaan'
@@ -78,7 +78,7 @@ app.get('/help/*', (req, res) => {
 })
 
 app.get('*', (req,res) => {
-    res.render('404page', {
+    res.render('404page.hbs', {
         title: 'error 404',
         error: 'Page not found',
         name: 'armaan'
